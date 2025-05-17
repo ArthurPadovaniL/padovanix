@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalhes do Filme - Germinaflix</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: white;
+      padding: 2rem;
+    }
+
+    .movie-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .movie-poster {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .movie-poster img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #e50914aa;
+    }
+
+    .movie-info {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .movie-info h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #e50914;
+    }
+
+    .movie-details {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #aaa;
+    }
+
+    .movie-details span {
+      margin-right: 1rem;
+      background-color: #222;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .movie-synopsis {
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+
+    .movie-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .movie-actions a {
+      background-color: #e50914;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .movie-actions a:hover {
+      background-color: #b0060f;
+    }
+
+    @media (max-width: 768px) {
+      .movie-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .movie-info {
+        align-items: center;
+        text-align: center;
+      }
+
+      .movie-details {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="movie-container">
+    <div class="movie-poster">
+      <img src="../img/Matrix.jpg" alt="Poster do Filme Matrix">
+    </div>
+
+    <div class="movie-info">
+      <div>
+        <h1>Matrix</h1>
+        <div class="movie-details">
+          <span>16+</span>
+          <span>2h 16min</span>
+          <span>Ação, Ficção Científica</span>
+          <span>⭐ 8.7</span>
+        </div>
+        <div class="movie-synopsis">
+          <p>
+            Em *Matrix*, um hacker chamado Neo (Keanu Reeves) é recrutado por um grupo de rebeldes para descobrir a verdade por trás de um sistema artificial que aprisiona a humanidade em uma simulação. Com a ajuda de Morpheus (Laurence Fishburne) e Trinity (Carrie-Anne Moss), Neo começa a descobrir suas habilidades sobrenaturais e seu papel fundamental na batalha contra as máquinas. O filme é um marco do gênero de ficção científica, com cenas de ação inovadoras e um enredo que desafia a percepção da realidade.
+          </p>
+        </div>
+      </div>
+
+      <div class="movie-actions">
+        <a href="#">▶ Ver Trailer</a>
+        <a href="#">➕ Adicionar à Lista</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Germinaflix - Quem está assistindo?</title>
+  <link rel="stylesheet" href="../style/style.css">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    header {
+      margin-top: 4rem;
+      margin-bottom: 3rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+
+    .profiles {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
+
+    .red { background-color: red; }
+    .blue { background-color: blue; }
+    .add {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+
+    .profile span {
+      font-size: 1rem;
+    }
+
+    .profile:hover span {
+      color: #e50914;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Quem está assistindo?</h1>
+  </header>
+
+  <div class="profiles">
+    <a href="../conteudo-principal/conteudo.html" class="profile">
+      <div class="avatar red"></div>
+      <span>Convidado 1</span>
+    </a>
+    <a href="../conteudo-principal/conteudo.html" class="profile">
+      <div class="avatar blue"></div>
+      <span>Convidado 2</span>
+    </a>
+    <a href="./menu3.html" class="profile">
+      <div class="avatar add">+</div>
+      <span>Adicionar</span>
+    </a>
+  </div>
+</body>
+</html>

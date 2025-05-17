@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sobre Mim | Germinaflix</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #e50914;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+    }
+
+    .foto-principal {
+      width: 100%;
+      height: 300px;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .foto-principal img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .galeria {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .galeria div {
+      flex: 1;
+      height: 150px;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .galeria img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    h2 {
+      color: #e50914;
+      margin-bottom: 1rem;
+    }
+
+    .descricao, .habilidades {
+      margin-bottom: 2rem;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li::before {
+      content: "• ";
+      color: #e50914;
+    }
+
+    .voltar {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #e50914;
+      color: white;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .voltar:hover {
+      background-color: #b00610;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Germinaflix</h1>
+    <a href="../conteudo-principal/conteudo.html" class="voltar">Voltar para home</a>
+  </header>
+
+  <div class="container">
+    <div class="foto-principal">
+      <img src="../img/WhatsApp Image 2025-02-18 at 07.41.57.jpeg" alt="foto minha">
+    </div>
+
+    <div class="galeria">
+      <div><img src="../img/WhatsApp Image 2025-02-17 at 21.49.31.jpeg" alt="foto 1"></div>
+      <div><img src="../img/WhatsApp Image 2025-02-17 at 21.49.32.jpeg" alt="foto 2"></div>
+      <div><img src="../img/WhatsApp Image 2025-02-18 at 07.35.13.jpeg" alt="foto 3"></div>
+      <div><img src="../img/WhatsApp Image 2025-02-18 at 07.41.57.jpeg" alt="foto 4"></div>
+    </div>
+
+    <div class="descricao">
+      <h2>Sobre Mim</h2>
+      <p>Tenho 15 anos, sou estudante do 1º ano do ensino médio na Germinare Tech e um verdadeiro entusiasta de tudo que envolve inovação, criatividade e evolução pessoal. Não me limito a uma só área, sou apaixonado por tecnologia, liderança, comunicação e criação. E é por isso que, no futuro, quero ocupar um cargo de alto impacto, como CTO ou COO, em uma grande empresa. Para isso, vou me preparar de verdade: pretendo cursar Ciência da Computação, Engenharia de Software, Marketing, Administração e Relações Internacionais, tudo que me ajude a unir visão estratégica com domínio técnico.
+        <br><br>
+        Além de estudar, eu exploro o mundo com intensidade: já fui vocalista de banda, youtuber e streamer. Nos meus momentos livres, eu treino musculação e calistenia, cozinho, danço, edito vídeos e mergulho em qualquer coisa que me desafie a crescer. Sou divertido, curioso, determinado e tenho uma energia que contagia. Estou aqui pra marcar presença, fazer acontecer e deixar minha marca no mundo ,com estilo, visão e atitude.
+      </p>
+    </div>
+
+    <div class="habilidades">
+      <h2>Minhas Habilidades</h2>
+      <ul>
+        <li>Python</li>
+        <li>Git & GitHub</li>
+        <li>Java</li>
+        <li>SQL</li>
+        <li>HTML & CSS</li>
+        <li>JavaScript (aprendendo)</li>
+        <li>Redstone & Bloco de Comando (Minecraft)</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Alterar Plano | Germinaflix</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #e50914;
+      margin-bottom: 2rem;
+    }
+
+    .plans {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .plan {
+      background-color: #1f1f1f;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: 0.3s ease;
+    }
+
+    .plan:hover {
+      border: 2px solid #e50914;
+    }
+
+    .plan h2 {
+      margin-bottom: 1rem;
+    }
+
+    .plan p {
+      margin-bottom: 1.5rem;
+      color: #ccc;
+    }
+
+    .plan a {
+      display: inline-block;
+      background-color: #e50914;
+      color: white;
+      text-decoration: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .plan a:hover {
+      background-color: #b00610;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Escolha seu novo plano</h1>
+
+  <div class="plans">
+    <div class="plan">
+      <h2>Básico</h2>
+      <p>Resolução padrão<br>1 tela<br>R$19,90/mês</p>
+      <a href="plano-basico.html">Selecionar</a>
+    </div>
+
+    <div class="plan">
+      <h2>Padrão</h2>
+      <p>HD disponível<br>2 telas<br>R$29,90/mês</p>
+      <a href="plano-padrao.html">Selecionar</a>
+    </div>
+
+    <div class="plan">
+      <h2>Premium</h2>
+      <p>Ultra HD + 4K<br>4 telas<br>R$39,90/mês</p>
+      <a href="conta.html">Selecionar</a>
+    </div>
+  </div>
+
+</body>
+</html>

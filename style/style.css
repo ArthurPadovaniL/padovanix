@@ -1,0 +1,68 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fundo e layout */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #0f0f0f, #1a1a1a);
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 500px;
+}
+
+/* Cabeçalho */
+header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  color: #e50914;
+}
+
+header p {
+  font-size: 1.2rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  background-color: #e50914;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b0060f;
+}
+
+.btn-secondary {
+  background-color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #555;
+}
+
+/* Rodapé */
+footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #777;
+}

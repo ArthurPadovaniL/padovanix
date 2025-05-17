@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Germinaflix</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: white;
+      display: flex;
+    }
+
+    /* === MENU LATERAL === */
+    #menu-toggle { display: none; }
+
+    .menu-icon {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-size: 2rem;
+      color: white;
+      background-color: #e50914;
+      padding: 10px 15px;
+      border-radius: 5px;
+      z-index: 999;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .menu-icon:hover { background-color: #b0060f; }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100vh;
+      background-color: #111;
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      z-index: 998;
+      overflow-y: auto;
+    }
+
+    #menu-toggle:checked + .menu-icon + .sidebar {
+      left: 0;
+    }
+
+    .sidebar label, .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+    }
+
+    .sidebar a:hover, .sidebar label:hover { background-color: #333; }
+
+    .genre-list {
+      display: none;
+      padding-left: 1rem;
+      background-color: #1a1a1a;
+    }
+
+    .genre-list a {
+      padding: 10px 20px;
+      border: none;
+    }
+
+    input[type="checkbox"].submenu-toggle { display: none; }
+    input[type="checkbox"].submenu-toggle:checked + label + .genre-list {
+      display: block;
+    }
+
+    /* === LUPA E PESQUISA === */
+    #search-toggle {
+      display: none;
+    }
+
+    /* Container para alinhar a lupa e a caixa de pesquisa */
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .search-icon {
+      font-size: 2rem;
+      color: white;
+      background-color: #e50914;
+      padding: 10px 15px;
+      border-radius: 100%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .search-icon:hover { background-color: #b0060f; }
+
+    /* Estilo da caixa de pesquisa */
+    .search-box {
+      display: none;
+      margin-left: 10px;
+      background-color: #222;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.7);
+    }
+
+    #search-toggle:checked + .search-container .search-box {
+      display: block;
+    }
+
+    .search-box input[type="text"] {
+      width: 200px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      background-color: #111;
+      color: white;
+      font-size: 1rem;
+    }
+
+    .search-box input::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+
+    /* === CONTEÚDO PRINCIPAL === */
+    .main-content {
+      margin-left: 250px;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+    }
+
+      .content-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1200px;
+        margin: 20; /* sem espaço nenhum nas laterais */
+        justify-content: flex-start;
+        gap: 20px;
+      }
+
+      .content-item {
+        width: 200px;
+        background-color: #222;
+        border-radius: 10px;
+        overflow: hidden;
+        padding-bottom: 1rem;
+      }
+      .content-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+      }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .rating span {
+      margin-left: 0.3rem;
+      font-weight: bold;
+    }
+
+    .content-item h3 {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+    }
+    
+
+    .content-item button, .content-item a.button {
+      display: block;
+      width: 80%;
+      margin: 0.4rem auto;
+      padding: 0.4rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #e50914;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .content-item button:hover, .content-item a.button:hover {
+      background-color: #b0060f;
+    }
+  </style>
+</head>
+<body>
+  <!-- MENU TOGGLE -->
+  <input type="checkbox" id="menu-toggle" />
+  <label for="menu-toggle" class="menu-icon">☰</label>
+  <div class="sidebar">
+    <a href="../conta/conta.html">👤 Minha Conta</a>
+    <a href="../../../conteudo-principal/conteudo.html">🏠 home</a>
+    <a href="#">⭐ Minha Lista</a>
+    <a href="../sobre mim/sobre-mim.html">sobre o criador</a>
+    <input type="checkbox" id="series-toggle" class="submenu-toggle" />
+    <label for="series-toggle">📺 Séries</label>
+    <div class="genre-list">
+      <a href="../series/categorias/todas as series/todas-series.html ">todas series</a><a href="#">Ação</a><a href="#">Suspense</a><a href="#">Comédia</a><a href="#">Drama</a>
+      <a href="#">Musical</a><a href="#">Animação</a><a href="#">Animes</a><a href="#">Terror</a>
+      <a href="#">Documentário</a><a href="#">nacionais</a><a href="#">Romance</a>
+      <a href="#">Ficção Científica</a><a href="#">Conteúdo Infantil</a><a href="#">Clássicos</a>
+    </div>
+    <input type="checkbox" id="filmes-toggle" class="submenu-toggle" />
+    <label for="filmes-toggle">🎬 Filmes</label>
+    <div class="genre-list">
+      <a href="../filmes/categorias/todos os filmes/todos-os-filmes.html">todos filmes</a><a href="#">Ação</a><a href="#">Suspense</a><a href="#">Comédia</a><a href="#">Drama</a>
+      <a href="#">Musical</a><a href="#">Animação</a><a href="#">Animes</a><a href="#">Terror</a>
+      <a href="#">Documentário</a><a href="#">nacionais</a><a href="#">Romance</a>
+      <a href="#">Ficção Científica</a><a href="#">Conteúdo Infantil</a><a href="#">Clássicos</a>
+      <a href="#">Ganhadores do Oscar</a>
+    </div>
+  </div>
+
+  <!-- PESQUISA -->
+  <input type="checkbox" id="search-toggle" />
+  <div class="search-container">
+    <label for="search-toggle" class="search-icon">🔍</label>
+    <div class="search-box">
+      <input type="text" placeholder="Procure seu filme ou série aqui" />
+    </div>
+  </div>
+
+  <div class="main-content">
+    <header>
+      <h1>Germinaflix</h1>
+    </header>
+
+    <h2 class="section-title">⭐ Top 10 da Semana</h2>
+    <div class="content-list">
+      <div class="content-item">
+        <img src="../series/categorias/açao/img/The Last of  Us.jpg" alt="The Last of Us">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.7</span>
+        </div>
+        <h3>The Last of Us</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/açao/site/the last of us.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/açao/img/Thunderbolts.jpg" alt="Thunderbolts">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.6</span>
+        </div>
+        <h3>Thunderbolts*</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/açao/site/thunderbolts.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/terror/img/3. Pecadores.jpg" alt="pecadores">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.1</span>
+        </div>
+        <h3>Pecadores</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/terror/site/pecadores.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/romance/img/Você.jpg">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.7</span>
+        </div>
+        <h3>You</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/romance/site/voce.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/açao/img/andor.jpeg" alt="Andor">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.4</span>
+        </div>
+        <h3>Andor</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/açao/site/andor.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/comedia/img/Black Mirror.jpg" alt="Black Mirror">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.7</span>
+        </div>
+        <h3>Black Mirror</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/comedia/site/black mirror.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/comedia/img/As Quatro Estações do Ano.jpg" alt="As Quatro Estações">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.3</span>
+        </div>
+        <h3>As Quatro Estações</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/comedia/site/as quatro estaçoes do ano.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/açao/img/Caos e Destruição.jpg" alt="Caos e Destruição">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>5.7</span>
+        </div>
+        <h3>Caos e Destruição</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/açao/site/Caos-e-Distroiçao.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/açao/img/Terra da Máfia.jpg" alt="Terra da Mafia">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.4</span>
+        </div>
+        <h3>Terra da Mafia</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/açao/site/terra da mafia.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/romance/img/outro pequeno favor.jpg" alt="Outro Pequeno Favor">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>5.3</span>
+        </div>
+        <h3>Outro Pequeno Favor</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/romance/site/outro-pequeno-favor.html" class="button">Ver Trailer</a>
+      </div>
+      
+      
+      
+    </div>
+
+    <h2 class="section-title">🎯 Recomendados</h2>
+    <div class="content-list">
+      <div class="content-item">
+        <img src="../series/categorias/açao/img/The Last of  Us.jpg" alt="The Last of Us">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.7</span>
+        </div>
+        <h3>The Last of Us</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/açao/site/the last of us.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/açao/img/o poderoso chefão.jpg" alt="Thunderbolts">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.2</span>
+        </div>
+        <h3>o poderoso chefão</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/açao/site/O-PoderosoChefao1.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/terror/img/A substancia.jpg" alt="pecadores">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.1</span>
+        </div>
+        <h3>A Substancia</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/terror/site/A-substancia.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/romance/img/Você.jpg">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.7</span>
+        </div>
+        <h3>You</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/romance/site/voce.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/ficção-cientifica/img/Interestelar.jpg" alt="interestelar">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>5.6</span>
+        </div>
+        <h3>Interestelar</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/ficção-cientifica/site/interestelar.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/comedia/img/Clube da luta.jpg" alt="clube da luta">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.9</span>
+        </div>
+        <h3>Clube da Luta</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/comedia/site/clubeDaLuta.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/ganhadores-do-oscar/img/Ainda estou aqui.jpg" alt="Ainda estou aqui">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.3</span>
+        </div>
+        <h3>Ainda estou aqui</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/ganhadores-do-oscar/site/aindaEstouAqui.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/açao/img/Matrix.jpg" alt="Caos e Destruição">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.6</span>
+        </div>
+        <h3>Matrix</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/açao/site/matrix.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../series/categorias/açao/img/Attack on titan.jpg" alt="Attack On Titan">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>8.4</span>
+        </div>
+        <h3>Attack on titan</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../series/categorias/açao/site/attack-on-titan.html" class="button">Ver Trailer</a>
+      </div>
+      <div class="content-item">
+        <img src="../filmes/categorias/suspense/img/Coringa.jpg" alt="Coringa">
+        <div class="rating">
+          <span style="font-size: 1.1rem; color: gold;">⭐</span>
+          <span>7.3</span>
+        </div>
+        <h3>Coringa</h3>
+        <button>Adicionar à Lista</button>
+        <a href="../filmes/categorias/suspense/site/coringa.html" class="button">Ver Trailer</a>
+      </div>
+      
+    </div>
+  </div>
+</body>
+</html>

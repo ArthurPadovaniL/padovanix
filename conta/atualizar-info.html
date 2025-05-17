@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atualizar Informações | Germinaflix</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+    }
+
+    h1 {
+      color: #e50914;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #1f1f1f;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1.5rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #333;
+      color: white;
+    }
+
+    .botao-salvar {
+      background-color: #e50914;
+      color: white;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .botao-salvar:hover {
+      background-color: #b00610;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Atualizar Informações</h1>
+
+  <form action="info-atualizada.html" method="get">
+    <label for="nome">Nome completo</label>
+    <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+
+    <label for="email">E-mail</label>
+    <input type="email" id="email" name="email" placeholder="Ex: joao@email.com" required>
+
+    <label for="senha">Nova senha</label>
+    <input type="password" id="senha" name="senha" placeholder="********" required>
+
+    <button type="submit" class="botao-salvar">Salvar</button>
+  </form>
+
+</body>
+</html>

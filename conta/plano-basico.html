@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta | Germinaflix</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #e50914;
+      font-size: 1.5rem;
+    }
+
+    header nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: #1e1e1e;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .user-info {
+      margin-bottom: 2rem;
+    }
+
+    .user-info h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #e50914;
+    }
+
+    .info-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .info-item span {
+      font-weight: bold;
+      color: #bbb;
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .actions a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: #e50914;
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .actions a:hover {
+      background-color: #b00610;
+    }
+
+    .back-home {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .back-home a {
+      display: inline-block;
+      background-color: #444;
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-home a:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Germinaflix</h1>
+    <nav>
+      <a href="index.html">Início</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="user-info">
+      <h2>Minha Conta</h2>
+      <div class="info-item"><span>Nome:</span> usuario</div>
+      <div class="info-item"><span>Email:</span> usuario@email.com</div>
+      <div class="info-item"><span>Plano:</span> Premium HD</div>
+      <div class="info-item"><span>Status:</span> Ativo</div>
+    </div>
+
+    <div class="actions">
+      <a href="./alterar-plano.html">Alterar plano</a>
+      <a href="atualizar-info.html">Atualizar informações</a>
+      <a href="gerenciar-dispositivos.html">Gerenciar dispositivos</a>
+      <a href="../index.html">Sair da conta</a>
+    </div>
+
+    <div class="back-home">
+      <a href="../conteudo-principal/conteudo.html">⬅ Voltar para Página Inicial</a>
+    </div>
+  </div>
+
+</body>
+</html>
